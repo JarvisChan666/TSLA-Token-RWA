@@ -1,0 +1,15 @@
+{
+  "name": "tesla-price-token",
+  "version": "1.0.0",
+  "description": "Tesla Price Token - A Foundry-based ERC20 token pegged to Tesla stock price",
+  "scripts": {
+    "upload-secrets": "node functions/uploadSecrets.js"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^1.4.0",
+    "@chainlink/functions-toolkit": "^0.3.2"
+  },
+  "devDependencies": {
+    "ethers": "^6.8.0"
+  }
+}
