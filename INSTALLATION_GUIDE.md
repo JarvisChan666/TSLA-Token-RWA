@@ -90,6 +90,42 @@ forge test
 make help
 ```
 
+## 项目依赖说明
+
+本项目使用以下主要依赖：
+
+### Solidity 依赖
+
+- **OpenZeppelin Contracts**: 提供安全的ERC20、Ownable、ReentrancyGuard等合约实现
+- **Chainlink Contracts**: 提供价格预言机接口和实现
+
+### Foundry 库
+
+- **ds-test**: Foundry的测试框架
+- **forge-std**: Foundry的标准库，包含常用的测试工具和脚本
+
+## 环境变量配置
+
+安装完成后，请复制环境变量模板并配置您的环境变量：
+
+```bash
+# 复制环境变量模板
+cp .env.example .env
+```
+
+然后编辑 `.env` 文件，填入您的实际配置值：
+
+```bash
+# 网络配置
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID
+PRIVATE_KEY=your_private_key_here
+ETHERSCAN_API_KEY=your_etherscan_api_key_here
+
+# 价格预言机地址
+TSLA_PRICE_FEED=0x0000000000000000000000000000000000000000  # 替换为实际地址
+ETH_PRICE_FEED=0x0000000000000000000000000000000000000000   # 替换为实际地址
+```
+
 ## 常见问题与解决方案
 
 ### Foundry 安装问题
@@ -105,6 +141,14 @@ make help
 2. **手动下载**：
    - 从 [Foundry GitHub Releases](https://github.com/foundry-rs/foundry/releases) 下载最新版本
    - 解压并将可执行文件路径添加到系统PATH
+
+3. **WSL环境**：
+   如果在Windows上遇到权限问题，可以考虑在WSL环境中安装Foundry：
+   ```bash
+   # 在WSL中
+   curl -L https://foundry.paradigm.xyz | bash
+   foundryup
+   ```
 
 ### Node.js 依赖问题
 
@@ -131,18 +175,47 @@ forge clean
 
 # 重新安装依赖
 forge install
+
+# 如果特定库安装失败，可以尝试单独安装
+forge install OpenZeppelin/openzeppelin-contracts --no-commit
+forge install smartcontractkit/chainlink-brownie-contracts --no-commit
 ```
 
-## 环境变量配置
+### Windows 特定问题
 
-安装完成后，请复制环境变量模板并配置您的环境变量：
+1. **路径长度限制**：
+   Windows有路径长度限制，如果遇到问题，可以：
+   - 启用长路径支持
+   - 将项目放在较短的路径下，如 `C:\dev\TSLAToken`
+
+2. **权限问题**：
+   以管理员身份运行PowerShell执行安装命令
+
+3. **防火墙/杀毒软件**：
+   某些防火墙或杀毒软件可能会阻止下载，请临时禁用或添加例外
+
+## 开发环境设置
+
+### VS Code 扩展推荐
+
+为了更好的开发体验，建议安装以下VS Code扩展：
+
+- **Solidity by Nomic Foundation**: Solidity语言支持
+- **Prettier - Code formatter**: 代码格式化
+- **ESLint**: 代码检查
+- **GitLens**: Git增强
+
+### 代码格式化
+
+项目使用Prettier进行代码格式化，可以在保存时自动格式化：
 
 ```bash
-# 复制环境变量模板
-cp .env.example .env
-```
+# 安装Prettier
+npm install --save-dev prettier
 
-然后编辑 `.env` 文件，填入您的实际配置值。
+# 格式化所有文件
+npx prettier --write .
+```
 
 ## 下一步
 
@@ -151,7 +224,8 @@ cp .env.example .env
 1. 阅读 [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) 了解如何部署合约
 2. 阅读 [USAGE_EXAMPLES.md](USAGE_EXAMPLES.md) 了解如何使用项目
 3. 运行 `make help` 查看可用的命令
+4. 查看 [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) 了解安全注意事项
 
 ---
 
-如果遇到任何问题，请参考项目的 [README.md](README.md) 或 [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) 获取更多信息。
+如果遇到任何问题，请参考项目的 [README.md](README.md) 或在GitHub上创建Issue获取帮助。

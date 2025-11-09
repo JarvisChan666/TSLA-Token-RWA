@@ -1,0 +1,4 @@
+Start verifying contract `0x11999576f06cbC958f82A6059f62f6AF4eC819b9` deployed on bsc
+Compiler version: v0.8.20+commit.a1b79de6
+Optimizations:    200
+[2m2025-11-09T04:27:37.482049Z[0m [31mERROR[0m [2metherscan[0m[2m:[0m Failed to deserialize ABI response [3merr[0m[2m=[0mReqwest(reqwest::Error { kind: Request, url: "https://api.etherscan.io/v2/api?chainid=56&apikey=XW4ABKYX46IUFHXTDBSCQ9K3CH5PJIX7XG&module=contract&action=getabi&address=0x11999576f06cbc958f82a6059f62f6af4ec819b9", source: hyper_util::client::legacy::Error(Connect, ConnectError("tcp connect error", 108.160.166.62:443, Os { code: 110, kind: TimedOut, message: "Connection timed out" })) })
